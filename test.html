@@ -2,6 +2,37 @@
 <meta name="google-signin-client_id" content="89426132712-sdqe89tihuqhpoiqjs6nqtq69n997sfq.apps.googleusercontent.com">
 <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
+<div class="modal fade" id="compose-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Compose</h4>
+      </div>
+      <form onsubmit="return sendEmail();">
+        <div class="modal-body">
+          <div class="form-group">
+            <input type="email" class="form-control" id="compose-to" placeholder="To" required />
+          </div>
+
+          <div class="form-group">
+            <input type="text" class="form-control" id="compose-subject" placeholder="Subject" required />
+          </div>
+
+          <div class="form-group">
+            <textarea class="form-control" id="compose-message" placeholder="Message" rows="10" required></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" id="send-button" class="btn btn-primary">Send</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 <script>
  function onSignIn(googleUser) {
@@ -11,6 +42,41 @@
   console.log('Image URL: ' + profile.getImageUrl());
   console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 }
+ 
+ function sendEmail()
+{
+  sendMessage(
+    {
+      'To': document.getElementById('compose-to').value,
+      'Subject': document.getElementById('compose-subject').value
+    },
+    document.getElementById('compose-message').value,
+    composeTidy
+  );
+
+  return false;
+}
+ 
+ function sendMessage(headers_obj, message, callback)
+{
+  var email = '';
+
+  for(var header in headers_obj)
+    email += header += ": "+headers_obj[header]+"\r\n";
+
+  email += "\r\n" + message;
+
+  var sendRequest = gapi.client.gmail.users.messages.send({
+    'userId': 'me',
+    'resource': {
+      'raw': window.btoa(email).replace(/\+/g, '-').replace(/\//g, '_')
+    }
+  });
+
+  return sendRequest.execute(callback);
+}
+ 
+ 
 </script>
 <a href="#" onclick="signOut();">Sign out</a>
 <script>
