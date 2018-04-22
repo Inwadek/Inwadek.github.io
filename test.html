@@ -69,7 +69,7 @@
   email += "\r\n" + message;
 //gapi.client.gmail.users.messages.send
 //gapi.gmail works?
-  var sendRequest = gapi.gmail.messages.send({
+  var sendRequest = gapi.gmail.send({
     'userId': 'me',
     'resource': {
       'raw': window.btoa(email).replace(/\+/g, '-').replace(/\//g, '_')
