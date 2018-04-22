@@ -67,8 +67,9 @@
     email += header += ": "+headers_obj[header]+"\r\n";
 
   email += "\r\n" + message;
-//gapi.client.gmail.users.messages.send gapi works...
-  var sendRequest = gapi.gmail.users.messages.send({
+//gapi.client.gmail.users.messages.send
+//gapi.gmail works?
+  var sendRequest = gapi.gmail.messages.send({
     'userId': 'me',
     'resource': {
       'raw': window.btoa(email).replace(/\+/g, '-').replace(/\//g, '_')
