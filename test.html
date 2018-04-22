@@ -35,6 +35,14 @@
 </div>
 
 <script>
+  var clientId = '89426132712-sdqe89tihuqhpoiqjs6nqtq69n997sfq.apps.googleusercontent.com';
+var apiKey = 'AIzaSyAoaTrgOhuDN0LCcY1ySc0milLkKW3JhbU';
+
+  var scopes =
+  'https://www.googleapis.com/auth/gmail.readonly '+
+  'https://www.googleapis.com/auth/gmail.send';
+
+  
  function onSignIn(googleUser) {
    /*
   var profile = googleUser.getBasicProfile();
@@ -68,8 +76,7 @@
 
   email += "\r\n" + message;
 //gapi.client.gmail.users.messages.send
-//gapi.gmail works?
-  var sendRequest = gapi.gmail.send({
+  var sendRequest = gapi.client.gmail.users.messages.send({
     'userId': 'me',
     'resource': {
       'raw': window.btoa(email).replace(/\+/g, '-').replace(/\//g, '_')
