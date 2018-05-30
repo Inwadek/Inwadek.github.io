@@ -12,7 +12,7 @@
       method: 'post',
       body: 'test',
       //mode: 'no-cors', // no-cors
-      //credentials: 'include', // include, same-origin
+      credentials: 'include', // include, same-origin
     }).then(e=>e.text())
     .then(e=>console.log(e))
     .catch(e=>console.log(e.message))
