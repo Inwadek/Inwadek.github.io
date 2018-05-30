@@ -15,7 +15,7 @@
       mode: 'no-cors', // no-cors
       credentials: 'include', // include, same-origin
     }).then(e=>e.text())
-    .then(e=>console.log(e))
+    .then(e=>console.log(JSON.stringify(e)))
     .catch(e=>console.log(e.message))
   }catch(e){console.log(e)};
 
