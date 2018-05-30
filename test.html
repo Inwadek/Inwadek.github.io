@@ -8,9 +8,10 @@
   function test(){
 
   try{
+    var data=['a','b','c'];
     fetch(`https://script.google.com/macros/s/AKfycbzNBF1WXR0YDwByhV2expw3vguQ1N9LvKuPkJJvYaB5LGIOxG9y/exec`, {
       method: 'post',
-      body: 'test',
+      body: 'JSON.stringify(data),
       mode: 'no-cors', // no-cors
       credentials: 'include', // include, same-origin
     }).then(e=>e.json())
