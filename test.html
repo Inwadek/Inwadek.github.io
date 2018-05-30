@@ -12,6 +12,7 @@
       method: 'post',
       body: 'test',
       mode: 'no-cors', // no-cors
+      credentials: 'same-origin', // include, same-origin
     }).then(e=>e.text())
     .then(e=>console.log(e[0]))
     .catch(e=>console.log(e.message))
