@@ -13,7 +13,7 @@
       body: 'test',
       mode: 'no-cors', // no-cors
     }).then(e=>e.text())
-    .then(e=>console.log(e.postData.contents))
+    .then(e=>console.log(e[0]))
     .catch(e=>console.log(e.message))
   }catch(e){console.log(e)};
 
