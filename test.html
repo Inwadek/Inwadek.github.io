@@ -13,7 +13,7 @@
       body: 'test',
       mode: 'no-cors', // no-cors
       credentials: 'include', // include, same-origin
-      redirect: 'follow', // manual, *follow, error
+      redirect: 'manual', // manual, *follow, error
     }).then(e=>e.text())
     .then(e=>console.log(e))
     .catch(e=>console.log(e.message))
