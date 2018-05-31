@@ -24,8 +24,8 @@
     fetch(`https://script.google.com/macros/s/AKfycbzNBF1WXR0YDwByhV2expw3vguQ1N9LvKuPkJJvYaB5LGIOxG9y/exec`, {
       method: 'post',
       body: 'test',
-      //mode: 'no-cors', // no-cors
-      credentials: 'include', // include, same-origin
+      mode: 'no-cors', // no-cors
+      //credentials: 'include', // include, same-origin
     }).then(e=>e.text())
     .then(e=>console.log(e))
     .catch(e=>console.log(e.message))
